@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "4011313c-df84-4426-ba4a-4e6df999198c",
+		"name": "AI Text Summarizer App",
+		"description": "This collection is a complementary tool to Postman Student Program's newest project based learning course using Hugging Face's AI Text Summarizing API.\n\nLearn how to use APIs and create a full stack project with Postman by following the link below.\n\nAlso don't forget to sign up for Postman Student Expert Program for more opportunities to learn about APIs and access to an excluse Discord community and invites to events!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32952601"
+	},
+	"item": [
+		{
+			"name": "frontend",
+			"item": [
+				{
+					"name": "retrieve summary",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text_to_summarize\": \"{{text}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/summarize",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"summarize"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "retrieve summary ex",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"text_to_summarize\": \"{{text}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/summarize",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"summarize"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 09 Aug 2023 18:38:54 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"110-GCl345Hk2MZ7H62D6RCazLCUFZE\""
+								},
+								{
+									"key": "Expect-Ct",
+									"value": "max-age=2592000, report-uri=\"https://sentry.repl.it/api/10/security/?sentry_key=615192fd532445bfbbbe966cd7131791\""
+								},
+								{
+									"key": "Replit-Cluster",
+									"value": "global"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=6487894; includeSubDomains"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								}
+							],
+							"cookie": [],
+							"body": "Amelia, a curious astronomer, spotted a peculiar comet through her telescope. Determined to investigate, she built a spaceship. On her journey, she encountered cosmic wonders, yet the comet remained elusive. Finally, at the edge of the universe, she understood its secret."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "backend",
+			"item": [
+				{
+					"name": "hugging face summary",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"inputs\": \"{{text}}\",\n   \"parameters\": {\n      \"max_length\": 100,\n      \"min_length\": 30\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
+							"protocol": "https",
+							"host": [
+								"api-inference",
+								"huggingface",
+								"co"
+							],
+							"path": [
+								"models",
+								"facebook",
+								"bart-large-cnn"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "huggingface summary ex",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"inputs\": \"{{text}}\",\n   \"parameters\": {\n      \"max_length\": 100,\n      \"min_length\": 30\n   }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
+									"protocol": "https",
+									"host": [
+										"api-inference",
+										"huggingface",
+										"co"
+									],
+									"path": [
+										"models",
+										"facebook",
+										"bart-large-cnn"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 09 Aug 2023 18:39:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "x-sha",
+									"value": "3d224934c6541b2b9147e023c2f6f6fe49bd27e1"
+								},
+								{
+									"key": "x-compute-type",
+									"value": "cpu"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "vary",
+									"value": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
+								},
+								{
+									"key": "access-control-expose-headers",
+									"value": "x-compute-type, x-compute-time"
+								},
+								{
+									"key": "x-compute-time",
+									"value": "3.755"
+								},
+								{
+									"key": "x-compute-characters",
+									"value": "587"
+								},
+								{
+									"key": "x-request-id",
+									"value": "08who6k27AyeUulwzZC5b"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"generated_text\": \"Amelia, a curious astronomer, spotted a peculiar comet through her telescope. Determined to investigate, she built a spaceship. On her journey, she encountered cosmic wonders, yet the comet remained elusive. Finally, at the edge of the universe, she understood its secret.\"\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "text",
+			"value": "Amelia, a curious astronomer, spotted a peculiar comet through her telescope. It emitted a mesmerizing glow and seemed to change course. Determined to investigate, she built a spaceship. On her journey, she encountered cosmic wonders, yet the comet remained elusive. Finally, at the edge of the universe, she understood its secret: the comet was a celestial guide, leading her to discover the boundless wonders within herself. Grateful for the voyage, Amelia returned, sharing her newfound wisdom with the world, inspiring others to explore both the cosmos and the depths of their souls."
+		},
+		{
+			"key": "baseUrl",
+			"value": "PASTE YOUR REPLIT WEBVIEW URL HERE AND IN CURRENT VALUE COLUMN"
+		},
+		{
+			"key": "access_token",
+			"value": "PASTE YOUR HUGGING FACE ACCESS TOKEN IN CURRENT VALUE COLUMN ONLY"
+		}
+	]
+}
